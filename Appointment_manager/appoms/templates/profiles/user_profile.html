@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h2>{% block title %}User profile page.{% endblock title %}</h2>
+{% endblock header %}
+
+{% block content %}
+  <h2>{ user.username } profile page.</h2>
+  <div>
+	  {% if user %}
+	  <ul>
+	  <li>{ user.username }</li>
+	  <li>{ user.first_name + user.last_name }</li>
+	  <li>{ uaer.email }</li>
+	  <li>{ user.phone_number }</li>
+	  </ul>
+	  {% endif %}
+  </div>
+{% endblock content %}

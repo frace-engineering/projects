@@ -2,7 +2,11 @@
 <html lang='en'>
 	<head>
 		<meta charset='utf-8'>
+		<meta name="Author" content="Ugwu F. B.">
+		<meta name="Description" content="The APOMS website for the clever management of tight appointment schedules">
 		<meta name="viewport" content="width=device-width initial-scale=1.0">
+		<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 		<title>{% block title %}{% endblock title %}</title>
 	</head>
 		<body>
@@ -16,5 +20,14 @@
 					{% block content %}<p>No message.</p>{% endblock content %}
 				</main>
 			</section>
+			<footer class="footer">
+				<div class="footer-div">
+					<h2>Contact Us:</h2>
+					<ul class="footer-ul">
+						<li><i class="fas fa-phone">08034732234</i></li>
+						<li><i class="fas fa-envelop">admin@appoms.com</i></li>
+					</ul>
+				</div>
+			</footer>
 		</body>
 </html>

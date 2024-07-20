@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Create service{% endblock title %}</h2>
+{% endblock header %}
+
+{% block content %}
+  <p>This is a lsit of the services.</p>
+  <h2>Services</h2>
+  <div>
+	  {% if services %}
+	  <ul>
+	  {% for service in services %}
+	  <li><a href="{{ url_for('view_services.services', service_name=service.service_name) }}">{{ service.service_name }}</a></li>
+	  {% endfor %}
+	  </ul>
+	  {% endif %}
+  </div>
+{% endblock content %}
