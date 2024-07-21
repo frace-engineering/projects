@@ -17,6 +17,12 @@ def index():
 def create_user():
     try:
         if request.method == 'POST':
+            user_role = Role.query.filter_by(name='user').first()
+            if not user_role:
+                user_role = Role(name='user')
+                db.session.add(user_role)
+                db.session.commit()
+
             user_role = Role(name='user')
             username = request.form['username']
             first_name = request.form['first_name']
@@ -92,7 +98,7 @@ def create_provider_role():
         provider_role = Role.query.filter_by(name='provider').first()
         current_user.roles = [provider_role,]
         db.session.commit()
-        return redirect(url_for('user.login'))
+        return redirect(url_for('viewa.login'))
     return render_template('views/providers.html')
 
 @user_bp.route('/user_role')

@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
     business_name = db.Column(db.String(50, collation='utf8_general_ci'), nullable=True)
     business_address = db.Column(db.String(200, collation='utf8_general_ci'), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
     phone_number = db.Column(db.String(50), nullable=False)
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='0')
     authenticated = db.Column(db.Boolean(), default=False)

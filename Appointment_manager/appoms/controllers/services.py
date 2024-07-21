@@ -22,7 +22,7 @@ def create_service():
             return redirect(url_for('user.list_services'))
         except TemplateNotFound:
             abort(404)
-    return render_template('views/create_service.html')
+    return render_template('view_services/create_service.html')
 
 @user_bp.route('/services', methods=['GET'], strict_slashes=False)
 @login_required

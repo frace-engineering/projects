@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h3>{% block title %}PLease pick a rolet{% endblock title %}</h3>
+{% endblock header %}
+
+{% block content %}
+	<h4> What category of user do you belong to?</h4>
+	<ul class="user-category">
+		<li><a href="{{ url_for('views.create_provider_role') }}" >Click here</a> if you are a service provider.</li>
+		<li><a href="{{ url_for('views.create_user_role') }}" >Click here</a> if you need a service</li>
+	</ul>
+{% endblock content %}
