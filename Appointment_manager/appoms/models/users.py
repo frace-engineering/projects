@@ -1,5 +1,4 @@
 from appoms import db
-import uuid
 from flask_user import UserMixin
 from .services import Service
 from datetime import datetime

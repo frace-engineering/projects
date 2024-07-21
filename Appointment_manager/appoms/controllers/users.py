@@ -33,7 +33,7 @@ def create_user():
                 return render_template('views/signup.html')
             user_role = Role.query.filter_by(name='user').first()
             new_user = User(username=username, first_name=first_name, last_name=last_name,\
-                    password=hashed_password, email=email, phone_number=phone_number, roles=[user_role], active=True)
+                    password=hashed_password, email=email, phone_number=phone_number, roles=[user_role,], active=True)
             db.session.add(new_user)
             db.session.commit()
             return render_template('views/roles.html')
@@ -41,7 +41,7 @@ def create_user():
     except TemplateNotFound:
         abort(404)
 
-@user_bp.route('/login', methods=['GET', 'POST'], strict_slashes=False)
+@user_bp.route('/user/login', methods=['GET', 'POST'], strict_slashes=False)
 def login():
     try:
         if request.method == 'POST':
@@ -90,9 +90,9 @@ def create_provider_role():
         current_user.business_name = business_name
         current_user.business_address = business_address
         provider_role = Role.query.filter_by(name='provider').first()
-        current_user.roles = [provider_role]
+        current_user.roles = [provider_role,]
         db.session.commit()
-        return redirect(url_for('views.login'))
+        return redirect(url_for('user.login'))
     return render_template('views/providers.html')
 
 @user_bp.route('/user_role')

@@ -23,3 +23,4 @@ class Config:
     USER_ENABLE_USERNAME = False
     USER_EMAIL_SENDER_NAME = USER_APP_NAME
     USER_EMAIL_SENDER_EMAIL = "noreply@example.com"
+    #USER_LOGIN_URL = '/user/login'

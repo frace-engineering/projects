@@ -5,7 +5,7 @@
 		<li><a href="{{ url_for('pages.home') }}">Contact Us</a></li>
 		{% if current_user.is_authenticated %}
 		<li><a href="{{ url_for('views.logout') }}">Logout</a></li>
-		<li><a href="{{ url_for('view_services.create_service') }}">Create cervice</a></li>
+		<li><a href="{{ url_for('user.create_service') }}">Create cervice</a></li>
 		{% else %}
 		<li><a href="{{ url_for('views.create_user') }}">Sign Up</a></li>
 		<li><a href="{{ url_for('views.login') }}">Login</a></li>

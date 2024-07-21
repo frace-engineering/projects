@@ -41,8 +41,8 @@ def create_app():
     from .controllers.users import user_bp
     app.register_blueprint(user_bp)
 
-    from .controllers.services import service_bp
-    app.register_blueprint(service_bp)
+    from .controllers.services import user_bp
+    app.register_blueprint(user_bp)
 
     from .controllers.profile import profile
     app.register_blueprint(profile)

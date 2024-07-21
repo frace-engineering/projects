@@ -5,9 +5,9 @@ from flask_user import roles_required
 from appoms import db
 from jinja2 import TemplateNotFound
 
-service_bp = Blueprint('view_services', __name__)
+user_bp = Blueprint('user', __name__)
 
-@service_bp.route('/create_service', methods=['GET', 'POST'], strict_slashes=False)
+@user_bp.route('/create_service', methods=['GET', 'POST'], strict_slashes=False)
 #@roles_required('provider')
 def create_service():
     if request.method == 'POST':
@@ -19,12 +19,12 @@ def create_service():
             db.session.add(new_service)
             db.session.commit()
             flash('Service created successfuly', 'success')
-            return redirect(url_for('view_services.list_services'))
+            return redirect(url_for('user.list_services'))
         except TemplateNotFound:
             abort(404)
-    return render_template('view_services/create_service.html')
+    return render_template('views/create_service.html')
 
-@service_bp.route('/services', methods=['GET'], strict_slashes=False)
+@user_bp.route('/services', methods=['GET'], strict_slashes=False)
 @login_required
 def list_services():
     try:
@@ -33,11 +33,11 @@ def list_services():
             flash('Fetched sercices successfully', 'success')
             return render_template('view_services/list_services.html', services=services)
         flash("Couldn't fetch services", "danger")
-        return redirect(url_for('view_services.list_services'))
+        return redirect(url_for('user.list_services'))
     except TemplateNotFound:
         abort(404)
 
-@service_bp.route('/services/<string:service_name>', methods=['GET'], strict_slashes=False)
+@user_bp.route('/services/<string:service_name>', methods=['GET'], strict_slashes=False)
 @login_required
 def services(service_name):
     try:
@@ -46,6 +46,6 @@ def services(service_name):
             flash('Fetched sercices successfully', 'success')
             return render_template('view_services/list_services.html', services=services)
         flash("Couldn't fetch services", "danger")
-        return redirect(url_for('view_services.list_services'))
+        return redirect(url_for('user.list_services'))
     except TemplateNotFound:
         abort(404)
