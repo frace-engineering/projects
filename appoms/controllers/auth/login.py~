@@ -1,0 +1,16 @@
+from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask_login import login_user
+from appoms.form import AppomsForm
+from appoms import bcrypt, User
+
+
+logbp = Blueprint('logbp', __name__)
+
+@logbp.route('/user/login', methods=['POST', 'GET'])
+def login():
+    form = AppomsForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+        return "Hello Appoms"
+    return render_template('login.html', form=form)

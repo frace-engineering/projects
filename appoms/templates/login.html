@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width initial-scale=1.0">
+		<meta name"Author" content="Ugwu friday bathlomew">
+		<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+		<title>Login page.</title>
+	</head>
+	<body>
+		<div class="regbp-div">
+		<h2>Login form</h2>
+		<form method="POST" action="{{ url_for('logbp.login') }}">
+			{{ form.hidden_tag() }}
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			<ul class="flashes">
+			{% for category, message in messages %}
+			<li class="{{ category }}">{{ message }}</li>
+			{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
+			<div class="regbp-form">
+				{{ form.email.label }}<br>{{ form.email() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.password.label }}<br>{{ form.password() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.submit() }}
+			</div>
+		</form>
+		<h4>New user? Please <a href="{{ url_for('regbp.register') }}">Sign-up</a> here</h4>
+		</div>
+	</body>
+</html>

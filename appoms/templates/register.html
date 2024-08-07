@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width initial-scale=1.0">
+		<meta name"Author" content="Ugwu friday bathlomew">
+		<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+		<title>Sign-up page.</title>
+	</head>
+	<body>
+		<div class="regbp-div">
+		<h2>Sign-up form</h2>
+		<form method="post" action="{{ url_for('regbp.register') }}">
+			{{ form.hidden_tag() }}
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			<ul class="flashes">
+			{% for category, message in messages %}
+			<li class="{{ category }}">{{ message }}</li>
+			{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
+			<div class="regbp-form">
+				{{ form.username.label }}<br>{{ form.username() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.first_name.label }}<br>{{ form.first_name() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.last_name.label }}<br>{{ form.last_name() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.email.label }}<br>{{ form.email() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.phone_number.label }}<br>{{ form.phone_number() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.password.label }}<br>{{ form.password() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.submit() }}
+			</div>
+		</form>
+		<h4>Existing user? Please <a href="{{ url_for('logbp.login') }}">Sign-in</a> here</h4>
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,12 @@
+flask
+flask-babel
+flask-login
+flask-bcrypt
+flask-migrate
+alembic
+mysql-connector-python
+flask-sqlalchemy
+flask-wtf
+email-validator
+wtform
+datetime

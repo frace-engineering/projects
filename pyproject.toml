@@ -1,0 +1,22 @@
+[project]
+name = "appoms"
+description = "Appoms is a booking app in use by service providers for effective management of appointment with clients"
+version = "0.1.0"
+dependencies = [
+"flask",
+"flask-babel",
+"flask-login",
+"flask-bcrypt",
+"flask-migrate",
+"alembic",
+"mysql-connector-python",
+"flask-sqlalchemy",
+"flask-wtf",
+"email-validator",
+"wtform",
+"datetime"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

@@ -1,0 +1,8 @@
+pyproject.toml
+setup.py
+appoms/__init__.py
+appoms.egg-info/PKG-INFO
+appoms.egg-info/SOURCES.txt
+appoms.egg-info/dependency_links.txt
+appoms.egg-info/requires.txt
+appoms.egg-info/top_level.txt
