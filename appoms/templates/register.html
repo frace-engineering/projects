@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width initial-scale=1.0">
-		<meta name"Author" content="Ugwu friday bathlomew">
-		<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-		<title>Sign-up page.</title>
-	</head>
-	<body>
+{% extends "base.html" %}
+{% block content %}
 		<div class="regbp-div">
 		<h2>Sign-up form</h2>
 		<form method="post" action="{{ url_for('regbp.register') }}">
@@ -45,6 +37,4 @@
 		</form>
 		<h4>Existing user? Please <a href="{{ url_for('logbp.login') }}">Sign-in</a> here</h4>
 		</div>
-
-	</body>
-</html>
+{% endblock content %}

@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
-from flask_login import login_user
+from flask_login import login_user, current_user
 from appoms import db, bcrypt, User
-from appoms.form import AppomsForm
+from appoms.form import AppomsForm, AppomsProviderForm
 
 
 regbp = Blueprint('regbp', __name__)
@@ -35,3 +35,23 @@ def register():
         flash(f'User <{new_user.username}'.upper() + '> created successfully. Please login to access your page.', 'success')
         return redirect(url_for('logbp.login'))
     return render_template('register.html', form=form)
+
+@regbp.route('/user/upgrade', methods=['POST', 'GET'])
+def upgrade_to_provider():
+    form = AppomsProviderForm()
+    if form.validate_on_submit():
+        business_name = form.business_name.data
+        business_address = form.business_address.data
+        office_email = form.office_email.data
+        office_phone_number = form.office_phone_number.data
+
+        user = current_user 
+        user.business_name = business_name
+        user.business_address = business_address
+        user.office_email = office_email
+        user.office_phone_number = office_phone_number
+        user.roles = 'provider'
+        db.session.commit()
+        flash(f'User <{user.username}'.upper() + '> upgraded successfully. Please login to access your page.', 'success')
+        return redirect(url_for('logbp.login'))
+    return render_template('upgrade/provider.html', form=form)

@@ -15,11 +15,22 @@ def get_user_profile():
     full_name = lname + ' ' + fname
     return render_template('profile.html', user=user, full_name=full_name)
 
-@profile_bp.route('/user/profile', methods=['GET'])
+@profile_bp.route('/users/profiles', methods=['GET'])
+@login_required
+def get_users_profiles():
+    users = User.query.all()
+    for user in users:
+        fname = user.first_name
+        lname = user.last_name
+        full_name = lname + fname
+    return render_template('profile.html', users=users, full_name=full_name)
+
+@profile_bp.route('/user/profile/edit', methods=['GET'])
 @login_required
 def update_profile():
-    user = current_user
-    fname = user.first_name
-    lname = user.last_name
-    full_name = lname + fname
-    return render_template('profile.html', user=user, full_name=full_name)
+    users = User.query.all()
+    for user in users:
+        fname = user.first_name
+        lname = user.last_name
+        full_name = lname + fname
+    return render_template('profile.html', users=users, full_name=full_name)

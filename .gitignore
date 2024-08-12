@@ -1,6 +1,8 @@
 .venv
 requirements.txt
 appoms/config.py
-alembic
+alembic/
 alembic.ini
 appoms.egg.info
+migrations/
+__pycache__/

@@ -1,6 +1,6 @@
 from flask import Flask
 from appoms.config import AppomsConfig
-from appoms.models.users import db, User
+from appoms.models.appoms_models import db, User, Product, Service, Appointment
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -24,8 +24,8 @@ def create_app():
     with app.app_context():
         db.create_all()
 
-    from appoms.controllers.auth.user import user_bp
-    app.register_blueprint(user_bp)
+    from appoms.controllers.app import appomsbp
+    app.register_blueprint(appomsbp)
 
     from appoms.controllers.auth.register import regbp
     app.register_blueprint(regbp)
@@ -35,5 +35,11 @@ def create_app():
 
     from appoms.controllers.profiles import profile_bp
     app.register_blueprint(profile_bp)
+
+    from appoms.controllers.post_utility import utility
+    app.register_blueprint(utility)
+
+    from appoms.controllers.list_utility import list_utils
+    app.register_blueprint(list_utils)
 
     return app
