@@ -1,0 +1,15 @@
+{% if current_user.is_authenticated %}
+<nav class="navigation">
+	<ul class="article-navigation-ul">
+		<li class="navigation list"><a href="{{ url_for('list_utils.list_appointments') }}">Appointments</a></li>
+		<li class="navigation list"><a href="{{ url_for('list_utils.list_services') }}">Services</a></li>
+		<li class="navigation list"><a href="{{ url_for('list_utils.list_products') }}">Products</a></li>
+		{% if current_user.roles == 'provider' %}
+		<li class="navigation list"><a href="{{ url_for('utility.create_appointment') }}">Create-Appointment</a></li>
+		<li class="navigation list"><a href="{{ url_for('utility.create_service') }}">Create-Service</a></li>
+		<li class="navigation list"><a href="{{ url_for('utility.create_product') }}">Create-Product</a></li>
+		{% endif %}
+	</ul>
+	<hr>
+</nav>
+{% endif %}

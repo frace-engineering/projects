@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name"Author" content="Ugwu friday bathlomew">
+		<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+		<title>{% block title %}Appoms page.{% endblock title %}</title>
+	</head>
+	<body>
+		<header>
+			<h2>Appoms provides you the ease of customer engagement.</h2>
+		</header>
+			{% include  "_navigation.html" %}
+		<section>
+		<aside class="main aside">
+			{% block aside %}{% endblock aside %}
+			{% include "aside_main.html" %}
+		</aside>
+		<article class="main article">
+			<div>
+			{% include "_article.html" %}
+			</div>
+			<div>
+			{% block content %}<p>Thank you for visiting appoms.</p>{% endblock content %}
+			</div>
+		</article>
+		</section>
+		<footer class="main footer">
+			{% block footer %}{% endblock footer %}
+		</footer>
+	</body>
+</html>

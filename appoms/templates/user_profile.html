@@ -1,0 +1,16 @@
+{% if current_user.is_authenticated %}
+{% extends "base.html" %}
+{% block aside %}
+<div class="probp-div">
+			<h2>{{ user.username }}'s profile.</h2>
+			<ul class="user-profile profile">
+				<li>Profile picture: {{ user.image }}</li>
+				<li>Username: {{ user.username }}</li>
+				<li>Full name: {{ full_name }}</li>
+				<li>E-mail: {{ user.email }}</li>
+				<li>Phone number: {{ user.phone_number }}</li>
+			</ul>
+		<h4>Update your profile <a href="{{ url_for('profile_bp.update_profile') }}">here!</a></h4>
+		</div>
+{% endblock aside %}
+{% endif %}

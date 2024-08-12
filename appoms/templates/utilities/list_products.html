@@ -1,0 +1,18 @@
+{% if current_user.is_authenticated %}
+{% extends "base.html" %}
+{% block content %}
+<div class="probp-div">
+	{% if products %}
+	{% for product in products %}
+	<h2>{{ product.product_name }}.</h2>
+		<ul class="user-profile profile">
+			<li>Model: {{ product.model }}</li>
+			<li>Year of manufacture: {{ product.yom }}</li>
+			<li>Usage: {{ product.usage }}</li>
+			<li>Provider ID: {{ product.user_id }}</li>
+		</ul>
+	{% endfor %}
+	{% endif %}
+</div>
+{% endblock content %}
+{% endif %}

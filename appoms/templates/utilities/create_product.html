@@ -1,0 +1,35 @@
+		
+{% extends "base.html" %}
+{% block content %}
+<div class="regbp-div">
+
+		<h2>Login form</h2>
+		<form method="POST" action="{{ url_for('utility.create_service') }}">
+			{{ form.hidden_tag() }}
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			<ul class="flashes">
+			{% for category, message in messages %}
+			<li class="{{ category }}">{{ message }}</li>
+			{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
+			<div class="regbp-form">
+				{{ form.product_name.label }}<br>{{ form.product_name() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.model.label }}<br>{{ form.model() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.yom.label }}<br>{{ form.yom() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.usage.label }}<br>{{ form.usage() }}
+			</div>
+			<div class="regbp-form">
+				{{ form.submit() }}
+			</div>
+		</form>
+		</div>
+{% endblock content %}

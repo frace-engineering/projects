@@ -1,0 +1,16 @@
+<nav class="navigation">
+	<ul class="navigation-ul">
+		<li class="navigation list"><a href="{{ url_for('appomsbp.home') }}">Home</a></li>
+		<li class="navigation list"><a href="{{ url_for('appomsbp.about') }}">About us</a></li>
+		<li class="navigation list"><a href="{{ url_for('appomsbp.contact') }}">Contact us</a></li>
+		{% if current_user.is_authenticated %}
+		<li class="navigation list"><a href="{{ url_for('logbp.logout') }}">Sign-Out</a></li>
+		{% if current_user.roles != 'provider' %}
+		<li class="navigation list"><a href="{{ url_for('regbp.upgrade_to_provider') }}">Upgrade</a></li>
+		{% endif %}
+		{% else %}
+		<li class="navigation list"><a href="{{ url_for('logbp.login') }}">Sign-In</a></li>
+		{% endif %}
+	</ul>
+	<hr>
+</nav>

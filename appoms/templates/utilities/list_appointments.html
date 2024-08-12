@@ -1,0 +1,19 @@
+{% if current_user.is_authenticated %}
+{% extends "base.html" %}
+{% block content %}
+<div class="probp-div">
+	{% if appointments %}
+	{% for appointment in appointments %}
+	<h2>{{ appointment.appointment_date }}.</h2>
+		<ul class="user-profile profile">
+			<li>Start time: {{ appointment.start_time }}</li>
+			<li>Status: {{ appointment.status }}</li>
+			<li>End time: {{ appointment.end_time }}</li>
+			<li>Note: {{ appointment.notes }}</li>
+			<li>User ID: {{ appointment.user_id }}</li>
+		</ul>
+	{% endfor %}
+	{% endif %}
+	</div>
+{% endblock content %}
+{% endif %}

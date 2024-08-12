@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="probp-div">
+	{% if services %}
+	{% for service in services %}
+	<h2>{{ service.service_name }}.</h2>
+		<ul class="user-profile profile">
+			<li>Description: {{ service.description }}</li>
+			<li>User ID: {{ service.user_id }}</li>
+		</ul>
+	{% endfor %}
+	{% endif %}
+	</div>
+{% endblock content %}
