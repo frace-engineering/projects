@@ -4,14 +4,7 @@
 <div class="probp-div">
 	{% if appointments %}
 	{% for appointment in appointments %}
-	<h2>{{ appointment.appointment_date }}.</h2>
-		<ul class="user-profile profile">
-			<li>Start time: {{ appointment.start_time }}</li>
-			<li>Status: {{ appointment.status }}</li>
-			<li>End time: {{ appointment.end_time }}</li>
-			<li>Note: {{ appointment.notes }}</li>
-			<li>User ID: {{ appointment.user_id }}</li>
-		</ul>
+	<h3><a href="{{ url_for('list_utils.get_appointment', appointment_date=appointment.appointment_date) }}">{{ appointment.appointment_date }}</a>.</h3>
 	{% endfor %}
 	{% endif %}
 	</div>

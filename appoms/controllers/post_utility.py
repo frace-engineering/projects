@@ -26,10 +26,11 @@ def create_product():
     form = ProductForm()
     if form.validate_on_submit():
         product_name = form.product_name.data
+        model = form.model.data
         yom = form.yom.data
         usage = form.usage.data
 
-        new_product = Product(product_name=product_name, yom=yom, user_id=current_user.id, usage=usage)
+        new_product = Product(product_name=product_name, yom=yom, model=model, user_id=current_user.id, usage=usage)
         db.session.add(new_product)
         db.session.commit()
         flash('New product entry created', 'success')

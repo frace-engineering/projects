@@ -43,6 +43,7 @@ class ServiceForm(FlaskForm):
 
 class ProductForm(FlaskForm):
     product_name = StringField('Product name', validators=[DataRequired()])
+    model = StringField('Model', validators=[DataRequired()])
     yom = MonthField('Year of manufacture', validators=[DataRequired()])
     usage = SelectField('Usage', choices=[('new', 'New'), ('fairly used', 'Fairly Used')])
     submit = SubmitField('Upload')

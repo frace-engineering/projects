@@ -3,11 +3,7 @@
 <div class="probp-div">
 	{% if services %}
 	{% for service in services %}
-	<h2>{{ service.service_name }}.</h2>
-		<ul class="user-profile profile">
-			<li>Description: {{ service.description }}</li>
-			<li>User ID: {{ service.user_id }}</li>
-		</ul>
+	<h3><a href="{{ url_for('list_utils.get_service', service_name=service.service_name, user_id=service.user_id) }}">{{ service.service_name }}</a>.</h3>
 	{% endfor %}
 	{% endif %}
 	</div>

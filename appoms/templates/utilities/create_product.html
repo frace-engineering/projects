@@ -4,7 +4,7 @@
 <div class="regbp-div">
 
 		<h2>Login form</h2>
-		<form method="POST" action="{{ url_for('utility.create_service') }}">
+		<form method="POST" action="{{ url_for('utility.create_product') }}">
 			{{ form.hidden_tag() }}
 			{% with messages = get_flashed_messages(with_categories=true) %}
 			{% if messages %}
