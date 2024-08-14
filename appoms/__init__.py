@@ -42,4 +42,10 @@ def create_app():
     from appoms.controllers.list_utility import list_utils
     app.register_blueprint(list_utils)
 
+    from appoms.controllers.clients import client
+    app.register_blueprint(client)
+
+    from appoms.controllers.providers import provider
+    app.register_blueprint(provider)
+
     return app

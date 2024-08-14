@@ -1,7 +1,7 @@
 {% if current_user.is_authenticated %}
 <nav class="navigation">
 	<ul class="article-navigation-ul">
-		<li class="navigation list"><a href="{{ url_for('list_utils.list_appointments') }}">Appointments</a></li>
+		<li class="navigation list"><a href="{{ url_for('provider.list_providers') }}">Providers</a></li>
 		<li class="navigation list"><a href="{{ url_for('list_utils.list_services') }}">Services</a></li>
 		<li class="navigation list"><a href="{{ url_for('list_utils.list_products') }}">Products</a></li>
 		{% if current_user.roles == 'provider' %}

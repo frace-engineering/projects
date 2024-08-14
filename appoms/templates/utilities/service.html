@@ -3,7 +3,7 @@
 {% block content %}
 <div class="probp-div">
 	{% if service %}
-	<h2>{{ service.service_name }}.</h2>
+	<h2><a href="{{ url_for('client.free_appointment_slots', service_name=service.service_name) }}">{{ service.service_name }}</a>.</h2>
 		<ul class="user-profile profile">
 			<li>Description: {{ service.description }}</li>
 			<li>User ID: {{ service.user_id }}</li>

@@ -65,7 +65,7 @@ class Service(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship('User', back_populates='services')
-    #appointments = db.relationship('Appointment', back_populates='service')
+    appointments = db.relationship('Appointment', back_populates='service')
 
     def __repr__(self):
         return f'Service name: {self.service_name}'
@@ -85,10 +85,10 @@ class Appointment(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow(), onupdate=datetime.utcnow(), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    #service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
+    service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=True)
 
     user = db.relationship('User', back_populates='appointments')
-    #service = db.relationship('Service', back_populates='appointments')
+    service = db.relationship('Service', back_populates='appointments')
 
 
     def __repr__(self):

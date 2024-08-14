@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="probp-div">
+	{% if appointments %}
+	{% if service %}
+	{% for appointment in appointments %}
+	<h3><a href="{{ url_for('client.book_appointment', appointment_id=appointment.id, service_id=service.id) }}">{{ appointment.appointment_date }}</a>.</h3>
+	{{ service.service_name }}
+	{% endfor %}
+	{% endif %}
+	{% endif %}
+	</div>
+{% endblock content %}

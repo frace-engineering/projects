@@ -12,6 +12,7 @@ body {
 }
 
 .navigation-ul {
+	margin: 0;
 	display: flex;
 	justify-content: space-around;
 	list-style-type: none;
@@ -51,6 +52,10 @@ header {
 	width: 18vw;
 	height: 70vh;
 	border: 10px solid rgba(1, 4, 10, 0.3)
+}
+
+header button {
+	margin-right: 10px;
 }
 
 .aside-profile {

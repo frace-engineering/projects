@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request, session
 from flask_login import login_user, logout_user, login_required, current_user
 from appoms.form import LoginForm
 from appoms import bcrypt, User
@@ -19,6 +19,7 @@ def login():
             return redirect(url_for('profile_bp.get_user_profile'))
         flash('Oops! email and password error. Please supply your correct detail.', 'danger')
     return render_template('login.html', form=form)
+
 
 @logbp.route('/admin/login', methods=['POST', 'GET'])
 def admin_login():

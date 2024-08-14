@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% for category, message in messages %}
+{{ message }}
+{% endfor %}
+{% endwith %}
+<div class="penfing-apointment">
+	<ul>
+		<li>Provider</li>
+		<li>Client</li>
+		<li>Service_name</li>
+		<li>Appointment_date</li>
+		<li>Start_time</li>
+		<li>End_time</li>
+		<li>Status</li>
+	</ul>
+</div>
+<div>
+	{% if service and appoitment and client %}
+<ul class="penfing-apointment">
+	<li>provider.business_name</li>
+	<li>client.username</li>
+	<li>service.service_name</li>
+	<li>appoitment.appointment_date</li>
+	<li>appointment.start_time</li>
+	<li>appointment.end_time</li>
+	<li>appointment.status</li>
+</ul>
+{% endif %}
+</div>
+{% endblock content %}

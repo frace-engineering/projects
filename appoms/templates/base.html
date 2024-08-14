@@ -11,6 +11,7 @@
 		<header>
 			<h2>Appoms provides you the ease of customer engagement.</h2>
 		</header>
+			<div><button onclick="window.history.back()">Back</button></div>
 			{% include  "_navigation.html" %}
 		<section>
 		<aside class="main aside">
@@ -19,10 +20,9 @@
 		</aside>
 		<article class="main article">
 			<div>
-			{% include "_article.html" %}
-			</div>
-			<div>
-			{% block content %}<p>Thank you for visiting appoms.</p>{% endblock content %}
+				{% include "_article.html" %}
+				{% block content %}
+				{% endblock content %}
 			</div>
 		</article>
 		</section>

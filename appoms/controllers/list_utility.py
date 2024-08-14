@@ -27,8 +27,6 @@ def list_appointments():
 @list_utils.route('/service', methods=['GET'])
 @login_required
 def get_service():
-    print(request.method)
-    print(request.args)
     service_name = request.args.get('service_name')
     user_id = request.args.get('user_id')
     if service_name:

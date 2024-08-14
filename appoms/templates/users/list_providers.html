@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<ul class="providers">
+{% if providers %}
+{% for provider in providers %}
+<li><a href="{{ url_for('provider.get_provider', provider_name=provider.username) }}">{{ provider.business_name }}</a></li>
+{% endfor %}
+{% endif %}
+{% endblock content %}
+
+

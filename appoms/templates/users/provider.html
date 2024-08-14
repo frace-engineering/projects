@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<ul class="provider">
+{% if user %}
+<h2>{{ user.business_name }}</h2>
+<li>{{ user.business_address }}</li>
+<li>{{ user.email }}</li>
+<li>{{ user.office_email }}</li>
+<li>{{ user.phone_number }}</li>
+<li>{{ user.office_phone_number }}</li>
+<li>{{ user.business_address }}</li>
+<li>{{ user.business_address }}</li>
+</ul>
+{% endif %}
+{% if services %}
+{% for service in services %}
+<ul class="provider">
+	<li><a href="{{ url_for('list_utils.get_service', service_name=service.service_name, user_id=service.user_id) }}">{{ service.service_name }}</a><li>
+</ul>
+{% endfor %}
+{% endif %}
+{% endblock content %}
+
+
