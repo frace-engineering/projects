@@ -2,10 +2,10 @@
 {% block content %}
 {% with messages = get_flashed_messages(with_categories=True) %}
 {% for category, message in messages %}
-{{ message }}
+<div class="alert alert-{{ category }}">{{ message }}</div>
 {% endfor %}
 {% endwith %}
-<div class="penfing-apointment">
+<div class="pending-apointment">
 	<ul>
 		<li>Provider</li>
 		<li>Client</li>
@@ -22,7 +22,7 @@
 	<li>provider.business_name</li>
 	<li>client.username</li>
 	<li>service.service_name</li>
-	<li>appoitment.appointment_date</li>
+	<li>appointment.appointment_date</li>
 	<li>appointment.start_time</li>
 	<li>appointment.end_time</li>
 	<li>appointment.status</li>
