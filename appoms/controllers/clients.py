@@ -49,12 +49,28 @@ def free_appointment_slots():
 def book_appointment():
     service_id = request.args.get('service_id')
     appointment_id = request.args.get('appointment_id')
+    if not service_id or not appointment_id:
+        flash('Appointment id and service id are needed', 'danger')
+        return render_template('utilities/appointment_slots.html')
+
     service = Service.query.filter_by(id=service_id).first()
+    if not service:
+        flash('Service is needed', 'danger')
+        return render_template('utilities/appointment_slots.html')
+
     provider = User.query.filter_by(id=service.user_id).first()
     appointment = Appointment.query.filter_by(id=appointment_id).filter_by(user_id=service.user_id).first()
-    print(service.id)
-    appointment.service_id = service_id
-    appointment.status = 'pending'
-    db.session.commit()
-    flash('You have successfully booked appointment with the bellow detail. Please save the date on a calener', 'success')
-    return render_template('utilities/pending_appointments.html', appointment=appointment, service=service)
+    if not appointment:
+        flash('Appointment is needed', 'danger')
+        return render_template('utilities/appointment_slots.html')
+    try:
+        print(service.id)
+        appointment.service_id = service_id
+        appointment.status = 'pending'
+        db.session.commit()
+        flash('You have successfully booked appointment with the bellow detail. Please save the date on a calener', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash('Something went wrong. Unable to book appointment', 'dager')
+    return render_template('utilities/pending_appointments.html', appointment=appointment, service=service, provider=provider, client=current_user)
+
