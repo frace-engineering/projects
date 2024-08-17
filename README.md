@@ -6,6 +6,8 @@ To install and run the application on your local machine, you have to either for
 $ git clone https://github.com/frace-engineering/projects.git
 
 This project is in the development stage
+Run the code bellow to setup your local database
+$ mysql -u <your-mysql-username> -p < create_appoms_db.sql  # Replace <your-mysql-username> with your actual mysql username.
 set up a python virtual environment 
 If you already have venv installed
 $ python3 -m venv <your-virtual-environment-name>

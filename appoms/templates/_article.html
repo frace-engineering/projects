@@ -1,10 +1,11 @@
 {% if current_user.is_authenticated %}
 <nav class="navigation">
 	<ul class="article-navigation-ul">
+		{% if current_user.roles == 'client' %}
 		<li class="navigation list"><a href="{{ url_for('provider.list_providers') }}">Providers</a></li>
-		<li class="navigation list"><a href="{{ url_for('list_utils.list_services') }}">Services</a></li>
-		<li class="navigation list"><a href="{{ url_for('list_utils.list_products') }}">Products</a></li>
-		{% if current_user.roles == 'provider' %}
+		<li class="navigation list"><a href="{{ url_for('client.view_appointments') }}">Appointments</a></li>
+		{% elif current_user.roles == 'provider' %}
+		<li class="navigation list"><a href="{{ url_for('provider.get_appointments') }}">Appointments</a></li>
 		<li class="navigation list"><a href="{{ url_for('utility.create_appointment') }}">Create-Appointment</a></li>
 		<li class="navigation list"><a href="{{ url_for('utility.create_service') }}">Create-Service</a></li>
 		<li class="navigation list"><a href="{{ url_for('utility.create_product') }}">Create-Product</a></li>

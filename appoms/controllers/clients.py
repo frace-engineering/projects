@@ -5,6 +5,25 @@ from flask_login import login_required, current_user
 
 client = Blueprint('client', __name__)
 
+
+@client.route('/user/appointments', methods=['GET'])
+@login_required
+def view_appointments():
+    appointments = Appointment.query.filter_by(client_id=current_user.id).all()
+    appointment_block = []
+    for appointment in appointments:
+        provider = User.query.filter_by(id=appointment.user_id).first()
+        service = Service.query.filter_by(id=appointment.service_id).first()
+        block = {
+                "appointment": appointment,
+                "provider": provider,
+                "client": current_user,
+                "service": service
+            }
+        appointment_block.append(block) 
+    flash('You have the bellow appointments', 'success')
+    return render_template('utilities/list_appointments.html', appointments=appointment_block)
+
 @client.route('/user/appointments', methods=['GET'])
 @login_required
 def get_user_appointments():
@@ -63,14 +82,17 @@ def book_appointment():
     if not appointment:
         flash('Appointment is needed', 'danger')
         return render_template('utilities/appointment_slots.html')
-    try:
-        print(service.id)
-        appointment.service_id = service_id
-        appointment.status = 'pending'
-        db.session.commit()
-        flash('You have successfully booked appointment with the bellow detail. Please save the date on a calener', 'success')
-    except Exception as e:
-        db.session.rollback()
-        flash('Something went wrong. Unable to book appointment', 'dager')
-    return render_template('utilities/pending_appointments.html', appointment=appointment, service=service, provider=provider, client=current_user)
+    if current_user.id != service.user_id:
+        try:
+            appointment.service_id = service_id
+            appointment.client_id = current_user.id
+            appointment.status = 'pending'
+            db.session.commit()
+            flash('You have successfully booked appointment with the bellow detail. Please save the date on a calener', 'success')
+            return render_template('utilities/pending_appointments.html', appointment=appointment, service=service, provider=provider, client=current_user)
+        except Exception as e:
+            db.session.rollback()
+            flash('Something went wrong. Unable to book appointment', 'dager')
+    flash('Your are not allowed to book from your own appointment slots, but you can book appointment with another service provider', 'dager')
+    return render_template('utilities/pending_appointments.html')
 

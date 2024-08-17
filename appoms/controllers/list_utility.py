@@ -1,5 +1,6 @@
 from flask import render_template, redirect, flash, Blueprint, request, url_for
-from appoms import Service, Product, Appointment
+from appoms import Service, Product, Appointment, User
+from sqlalchemy.orm import joinedload
 from flask_login import login_required, current_user
 
 
@@ -19,8 +20,21 @@ def list_products():
 @list_utils.route('/appointments', methods=['GET'])
 @login_required
 def list_appointments():
-    appointments = Appointment.query.all()
-    return render_template('utilities/list_appointments.html', appointments=appointments)
+    appointments = Appointment.query.filter_by(user_id=current_user.id).options(
+            joinedload(Appointment.user),
+            joinedload(Appointment.service)
+            ).all()
+    appointment_block = []
+    for appointment in appointments:
+        client = User.query.filter_by(id=appointment.client_id).first()
+        block = {
+            "appointment": appointment,
+            "provider": appointment.user,
+            "client": client,
+            "service": appointment.service
+            }
+        appointment_block.append(block)
+    return render_template('utilities/list_appointments.html', appointments=appointment_block)
 
 
 

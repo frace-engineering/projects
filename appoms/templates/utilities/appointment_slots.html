@@ -4,7 +4,7 @@
 	{% if appointments %}
 	{% if service %}
 	{% for appointment in appointments %}
-	<h3><a href="{{ url_for('client.book_appointment', appointment_id=appointment.id, service_id=service.id) }}">{{ appointment.appointment_date }}</a>.</h3>
+	<h3><a href="{{ url_for('client.book_appointment', appointment_id=appointment.id, service_id=service.id) }}">Date: {{ appointment.appointment_date }}</a> | StartTime: {{ appointment.start_time }} | EndTime: {{ appointment.end_time }}</h3>
 	{{ service.service_name }}
 	{% endfor %}
 	{% endif %}

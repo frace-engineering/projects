@@ -3,9 +3,32 @@
 {% block content %}
 <div class="probp-div">
 	{% if appointments %}
-	{% for appointment in appointments %}
-	<h3><a href="{{ url_for('list_utils.get_appointment', appointment_date=appointment.appointment_date) }}">{{ appointment.appointment_date }}</a>.</h3>
+	<table class="table table-bordered custom-table pending-appointment">
+		<thead>
+			<tr>
+				<td>Service_name</td>
+				<td>Appointment_date</td>
+				<td>Start_time</td>
+				<td>End_time</td>
+				<td>Provider</td>
+				<td>Client</td>
+				<td>Status</td>
+			</tr>
+		</thead>
+	{% for appointment_block in appointments %}
+		<tbody>
+			<tr  class="pending-appointment value">
+			<td>{{ appointment_block.service.service_name }}</td>
+			<td><a href="{{ url_for('list_utils.get_appointment', appointment_date=appointment_block.appointment.appointment_date) }}">{{ appointment_block.appointment.appointment_date }}</a></td>
+			<td>{{ appointment_block.appointment.start_time }}</td>
+			<td>{{ appointment_block.appointment.end_time }}</td>
+			<td>{{ appointment_block.provider.business_name }}</td>
+			<td>{{ appointment_block.client.username }}</td>
+			<td>{{ appointment_block.appointment.status }}</td>
+			</tr>
+		</tbody>
 	{% endfor %}
+	</table>
 	{% endif %}
 	</div>
 {% endblock content %}

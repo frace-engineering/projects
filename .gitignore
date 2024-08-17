@@ -1,9 +1,0 @@
-alembic.ini
-alembic
-migrations
-requirements.txt
-appoms.egg.info
-pyproject.toml
-setup.py
-appoms/config.py
-appoms/__pycache__/

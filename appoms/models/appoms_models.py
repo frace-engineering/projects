@@ -86,9 +86,11 @@ class Appointment(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=True)
+    client_id = db.Column(db.Integer, nullable=True)
 
     user = db.relationship('User', back_populates='appointments')
     service = db.relationship('Service', back_populates='appointments')
+
 
 
     def __repr__(self):

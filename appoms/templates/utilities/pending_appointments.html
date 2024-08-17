@@ -5,28 +5,33 @@
 <div class="alert alert-{{ category }}">{{ message }}</div>
 {% endfor %}
 {% endwith %}
-<div class="pending-apointment">
-	<ul>
-		<li>Provider</li>
-		<li>Client</li>
-		<li>Service_name</li>
-		<li>Appointment_date</li>
-		<li>Start_time</li>
-		<li>End_time</li>
-		<li>Status</li>
-	</ul>
-</div>
+
+{% if service or appoitment or client or provider %}
 <div>
-	{% if service and appoitment and client and provider %}
-<ul class="penfing-apointment">
-	<li>provider.business_name</li>
-	<li>client.username</li>
-	<li>service.service_name</li>
-	<li>appointment.appointment_date</li>
-	<li>appointment.start_time</li>
-	<li>appointment.end_time</li>
-	<li>appointment.status</li>
-</ul>
-{% endif %}
+	<table  class="table table-bordered custom-table pending-appointment">
+		<thead>
+			<tr>
+				<td>Provider</td>
+				<td>Client</td>
+				<td>Service_name</td>
+				<td>Appointment_date</td>
+				<td>Start_time</td>
+				<td>End_time</td>
+				<td>Status</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="pending-appointment value">
+				<td>{{ provider.business_name }}</td>
+				<td>{{ client.username }}</td>
+				<td>{{ service.service_name }}</td>
+				<td>{{ appointment.appointment_date }}</td>
+				<td>{{ appointment.start_time }}</td>
+				<td>{{ appointment.end_time }}</td>
+				<td>{{ appointment.status }}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
+{% endif %}
 {% endblock content %}

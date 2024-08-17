@@ -15,9 +15,9 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user and bcrypt.check_password_hash(user.password, password):
             login_user(user, remember=True)
-            flash(f'Welcome to your page, {user.username}.', 'success')
+            flash(f'Welcome to your page, {user.username}.', 'signin-success')
             return redirect(url_for('profile_bp.get_user_profile'))
-        flash('Oops! email and password error. Please supply your correct detail.', 'danger')
+        flash('Oops! email and password error. Please supply your correct detail.', 'signin-danger')
     return render_template('login.html', form=form)
 
 

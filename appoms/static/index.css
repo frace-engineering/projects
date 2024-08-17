@@ -1,6 +1,6 @@
 body {
 	background-color: #2dcedf;
-	margin: 0px;
+	margin: 10px;
 }
 
 .regbp-form {
@@ -81,3 +81,34 @@ header button {
 	display: flex;
 	justify-content: space-around;
 }
+
+.custom-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.custom-table th, .custom-table td {
+	border: 1px solid #ddd;
+        padding: 8px;
+}
+
+.custom-table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #f2f2f2;
+        color: black;
+}
+
+.custom-table tbody tr:nth-child(even) {
+       background-color: #f9f9f9;
+}
+
+.custom-table tbody tr:hover {
+        background-color: #ddd;
+}
+
+.custom-table td {
+        vertical-align: top;
+}
+

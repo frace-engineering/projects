@@ -2,16 +2,17 @@
 {% extends "base.html" %}
 {% block aside %}
 <div class="aside-profile-div">
-			<ul class="aside-profile profile">
-				<li>Profile picture: {{ user.image }}</li>
-				<li>Username: <span>{{ user.username }}</span></li>
-				<li>User role: <span>{{ user.roles }}</span></li>
-				<li>Full name: <span>{{ full_name }}</span></li>
-				<li>E-mail: <span>{{ user.email }}</span></li>
-				<li>Phone number: <span>{{ user.phone_number }}</span></li>
-			</ul>
-		<h4><a href="{{ url_for('profile_bp.update_profile') }}">Edit</a> your profile.</h4>
-		</div>
-		<hr>
+	<ul class="aside-profile profile">
+		<li>Profile picture: {{ user.image }}</li>
+		<li>Username: <span>{{ user.username }}</span></li>
+		<li>User role: <span>{{ user.roles }}</span></li>
+		<li>Full name: <span>{{ full_name }}</span></li>
+		<li>E-mail: <span>{{ user.email }}</span></li>
+		<li>Phone number: <span>{{ user.phone_number }}</span></li>
+	</ul>
+	<h4><a href="{{ url_for('profile_bp.update_profile') }}">Edit</a> your profile.</h4>
+	<h4>View your <a href="{{ url_for('client.view_appointments') }}">appointments</a>.</h4>
+</div>
 {% endblock aside %}
 {% endif %}
+<hr>
